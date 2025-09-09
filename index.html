@@ -3,14 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Hero Slider</title>
+    <title>Ministry Hero Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            color: #333;
+            background: #f9f9f9;
+        }
+
         /* Hero Section */
         .hero {
             height: 100vh;
+            min-height: 600px;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2c5aa0 0%, #1a3363 100%);
         }
 
         .hero-slider {
@@ -45,6 +60,7 @@
             max-width: 800px;
             padding: 0 2rem;
             position: relative;
+            animation: fadeIn 1s ease;
         }
 
         .slide-content h1 {
@@ -60,6 +76,7 @@
             margin-bottom: 2rem;
             opacity: 0.95;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            line-height: 1.6;
         }
 
         .cta-button {
@@ -78,6 +95,7 @@
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            background: #f1f1f1;
         }
 
         .slide-image {
@@ -152,36 +170,6 @@
             color: #2c5aa0;
         }
 
-        /* Loading animation */
-        .slide-image img {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .slide-image img.loaded {
-            opacity: 1;
-        }
-
-        /* Section Styles */
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: #2c5aa0;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .section-header p {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .slide-content h1 {
@@ -197,6 +185,111 @@
                 height: 40px;
                 font-size: 1.2rem;
             }
+            
+            .slider-dots {
+                bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide-content h1 {
+                font-size: 2rem;
+            }
+            
+            .slide-content p {
+                font-size: 0.9rem;
+            }
+            
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .nav-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content section below hero */
+        .content-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            color: #2c5aa0;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c5aa0;
+        }
+
+        .feature p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        footer {
+            background: #2c5aa0;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
         }
     </style>
 </head>
@@ -210,45 +303,45 @@
                     <a href="about.html" class="cta-button" data-translate="hero_cta_1">Learn More</a>
                 </div>
                 <div class="slide-image">
-                    <img src="https://i.postimg.cc/XvdqJGT9/CHURCH.png" alt="Church" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Church">
                 </div>
             </div>
             <div class="slide">
                 <div class="slide-content">
                     <h1>Giving Hope</h1>
                     <p>REACH OUT WITH THE LITTLE YOU HAVE, AND SEE WHETHER IT WILL NOT MULTIPLY!</p>
-                    <a href="https://www.sponsor.aloysiusministries.org" class="cta-button">Meet Our Children</a>
+                    <a href="#" class="cta-button">Meet Our Children</a>
                 </div>
                 <div class="slide-image">
-                    <img src="https://i.postimg.cc/6QBwMxJk/img-17.jpg" alt="Children getting meal" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1596386461350-326ccb383e9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1712&q=80" alt="Children getting meal">
                 </div>
             </div>
             <div class="slide">
                 <div class="slide-content">
                     <h1>Faith-Based Support</h1>
                     <p>Nurturing children's spiritual growth through Bible study and Christian education</p>
-                    <a href="mailto:support@aloysiusministries.org" class="cta-button">Sponsor Today</a>
+                    <a href="#" class="cta-button">Sponsor Today</a>
                 </div>
                 <div class="slide-image">
-                    <img src="https://i.postimg.cc/jdDKLht7/image-70.jpg.jpg" alt="Children praying" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1584696049838-8e692282a2b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1769&q=80" alt="Children praying">
                 </div>
             </div>
             <div class="slide">
                 <div class="slide-content">
                     <h1>New Life Christ</h1>
                     <p>He said to them, "Go into all the world and preach the gospel to all creation. Whoever believes and is baptized will be saved, but whoever does not believe will be condemned." MARK 16:15-16</p>
-                    <a href="mailto:support@aloysiusministries.org" class="cta-button">Contact Us</a>
+                    <a href="#" class="cta-button">Contact Us</a>
                 </div>
                 <div class="slide-image">
-                    <img src="https://i.postimg.cc/jdDKLht7/image-70.jpg.jpg" alt="Children praying" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1776&q=80" alt="Bible study">
                 </div>
             </div>
         </div>
         
         <!-- Navigation arrows -->
         <div class="slider-nav">
-            <div class="nav-arrow prev">&#10094;</div>
-            <div class="nav-arrow next">&#10095;</div>
+            <div class="nav-arrow prev"><i class="fas fa-chevron-left"></i></div>
+            <div class="nav-arrow next"><i class="fas fa-chevron-right"></i></div>
         </div>
         
         <div class="slider-dots">
@@ -259,6 +352,35 @@
         </div>
     </section>
 
+    <div class="content-section">
+        <h2>Welcome to Our Ministry</h2>
+        <p>We are dedicated to spreading the love and teachings of Jesus Christ through community outreach, spiritual guidance, and support for those in need. Our mission is to transform lives through faith, hope, and charity.</p>
+        
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-hands-helping"></i>
+                <h3>Community Outreach</h3>
+                <p>We actively serve our local community through various programs and initiatives aimed at helping those in need.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-church"></i>
+                <h3>Worship Services</h3>
+                <p>Join us for inspirational worship services that celebrate faith and foster spiritual growth.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-users"></i>
+                <h3>Youth Programs</h3>
+                <p>Our youth programs help young people develop their faith and build a strong moral foundation.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Aloysius Ministries &copy; 2023. All Rights Reserved.</p>
+        <p>123 Faith Avenue, Hope City, HC 12345</p>
+        <p>Email: info@aloysiusministries.org | Phone: (123) 456-7890</p>
+    </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const slides = document.querySelectorAll('.slide');
@@ -267,22 +389,6 @@
             const nextArrow = document.querySelector('.nav-arrow.next');
             let currentSlide = 0;
             let slideInterval;
-            let startX = 0;
-            let endX = 0;
-
-            // Preload images and mark as loaded when ready
-            const preloadImages = () => {
-                slides.forEach(slide => {
-                    const img = slide.querySelector('img');
-                    if (img.complete) {
-                        img.classList.add('loaded');
-                    } else {
-                        img.addEventListener('load', () => {
-                            img.classList.add('loaded');
-                        });
-                    }
-                });
-            };
 
             const activateSlide = (n) => {
                 slides.forEach(slide => slide.classList.remove('active'));
@@ -340,47 +446,9 @@
             slider.addEventListener('mouseenter', stopSlider);
             slider.addEventListener('mouseleave', startSlider);
 
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') {
-                    prevSlide();
-                    stopSlider();
-                    startSlider();
-                } else if (e.key === 'ArrowRight') {
-                    nextSlide();
-                    stopSlider();
-                    startSlider();
-                }
-            });
-
-            // Touch swipe support for mobile
-            slider.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-            }, { passive: true });
-
-            slider.addEventListener('touchend', (e) => {
-                endX = e.changedTouches[0].clientX;
-                handleSwipe();
-            }, { passive: true });
-
-            const handleSwipe = () => {
-                if (startX - endX > 50) {
-                    // Swipe left - next slide
-                    nextSlide();
-                } else if (endX - startX > 50) {
-                    // Swipe right - previous slide
-                    prevSlide();
-                }
-                stopSlider();
-                startSlider();
-            };
-
-            // Preload images
-            preloadImages();
-
             // Start the slider on page load
             startSlider();
         });
     </script>
 </body>
-  </html>
+</html>
