@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Hero Slider</title>
+    <style>
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .hero-slider {
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .slide-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #2c5aa0;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-shadow: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .slide-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .slide-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 3;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        /* Navigation arrows */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 3;
+            transform: translateY(-50%);
+        }
+
+        .nav-arrow {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(255, 255, 255, 0.8);
+            color: #2c5aa0;
+        }
+
+        /* Loading animation */
+        .slide-image img {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .slide-image img.loaded {
+            opacity: 1;
+        }
+
+        /* Section Styles */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .slide-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .slide-content p {
+                font-size: 1rem;
+            }
+            
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="home" class="hero">
+        <div class="hero-slider">
+            <div class="slide active">
+                <div class="slide-content">
+                    <h1 data-translate="hero_title_1">A place of healing, Hope and Transformation</h1>
+                    <p data-translate="hero_subtitle_1">We are life changing Ministry dedicated to spreading the Gospel of Jesus Christ across the World</p>
+                    <a href="about.html" class="cta-button" data-translate="hero_cta_1">Learn More</a>
+                </div>
+                <div class="slide-image">
+                    <img src="https://i.postimg.cc/XvdqJGT9/CHURCH.png" alt="Church" loading="lazy">
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-content">
+                    <h1>Giving Hope</h1>
+                    <p>REACH OUT WITH THE LITTLE YOU HAVE, AND SEE WHETHER IT WILL NOT MULTIPLY!</p>
+                    <a href="https://www.sponsor.aloysiusministries.org" class="cta-button">Meet Our Children</a>
+                </div>
+                <div class="slide-image">
+                    <img src="https://i.postimg.cc/6QBwMxJk/img-17.jpg" alt="Children getting meal" loading="lazy">
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-content">
+                    <h1>Faith-Based Support</h1>
+                    <p>Nurturing children's spiritual growth through Bible study and Christian education</p>
+                    <a href="mailto:support@aloysiusministries.org" class="cta-button">Sponsor Today</a>
+                </div>
+                <div class="slide-image">
+                    <img src="https://i.postimg.cc/jdDKLht7/image-70.jpg.jpg" alt="Children praying" loading="lazy">
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-content">
+                    <h1>New Life Christ</h1>
+                    <p>He said to them, "Go into all the world and preach the gospel to all creation. Whoever believes and is baptized will be saved, but whoever does not believe will be condemned." MARK 16:15-16</p>
+                    <a href="mailto:support@aloysiusministries.org" class="cta-button">Contact Us</a>
+                </div>
+                <div class="slide-image">
+                    <img src="https://i.postimg.cc/jdDKLht7/image-70.jpg.jpg" alt="Children praying" loading="lazy">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation arrows -->
+        <div class="slider-nav">
+            <div class="nav-arrow prev">&#10094;</div>
+            <div class="nav-arrow next">&#10095;</div>
+        </div>
+        
+        <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+            <span class="dot" data-slide="3"></span>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevArrow = document.querySelector('.nav-arrow.prev');
+            const nextArrow = document.querySelector('.nav-arrow.next');
+            let currentSlide = 0;
+            let slideInterval;
+            let startX = 0;
+            let endX = 0;
+
+            // Preload images and mark as loaded when ready
+            const preloadImages = () => {
+                slides.forEach(slide => {
+                    const img = slide.querySelector('img');
+                    if (img.complete) {
+                        img.classList.add('loaded');
+                    } else {
+                        img.addEventListener('load', () => {
+                            img.classList.add('loaded');
+                        });
+                    }
+                });
+            };
+
+            const activateSlide = (n) => {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                slides[n].classList.add('active');
+                dots[n].classList.add('active');
+                currentSlide = n;
+            };
+
+            const nextSlide = () => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                activateSlide(currentSlide);
+            };
+
+            const prevSlide = () => {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                activateSlide(currentSlide);
+            };
+
+            const startSlider = () => {
+                // Automatically advance the slide every 5 seconds (5000 milliseconds)
+                slideInterval = setInterval(nextSlide, 5000);
+            };
+
+            const stopSlider = () => {
+                clearInterval(slideInterval);
+            };
+
+            // Add event listeners for the dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    activateSlide(index);
+                    // Stop and restart the auto-slide on manual navigation
+                    stopSlider();
+                    startSlider();
+                });
+            });
+
+            // Add event listeners for navigation arrows
+            prevArrow.addEventListener('click', () => {
+                prevSlide();
+                stopSlider();
+                startSlider();
+            });
+
+            nextArrow.addEventListener('click', () => {
+                nextSlide();
+                stopSlider();
+                startSlider();
+            });
+
+            // Pause slider on hover
+            const slider = document.querySelector('.hero-slider');
+            slider.addEventListener('mouseenter', stopSlider);
+            slider.addEventListener('mouseleave', startSlider);
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    stopSlider();
+                    startSlider();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    stopSlider();
+                    startSlider();
+                }
+            });
+
+            // Touch swipe support for mobile
+            slider.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            }, { passive: true });
+
+            slider.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                handleSwipe();
+            }, { passive: true });
+
+            const handleSwipe = () => {
+                if (startX - endX > 50) {
+                    // Swipe left - next slide
+                    nextSlide();
+                } else if (endX - startX > 50) {
+                    // Swipe right - previous slide
+                    prevSlide();
+                }
+                stopSlider();
+                startSlider();
+            };
+
+            // Preload images
+            preloadImages();
+
+            // Start the slider on page load
+            startSlider();
+        });
+    </script>
+</body>
+  </html>
